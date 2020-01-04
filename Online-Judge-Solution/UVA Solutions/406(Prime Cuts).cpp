@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+using namespace std;
+void sieve(int SIZE,int n)
+{
+    int i,j,count=0,num,h;
+    int status[SIZE],result[10000];
+    for(i=0; i<=SIZE; i++) status[i]= 0;
+    int sq = sqrt(SIZE);
+    for(i=4; i<=SIZE; i+=2) status[i] = 1;
+    for(i=3; i<=sq; i+=2)
+    {
+        if(status[i]==0)
+        {
+            for(j=2*i; j<=SIZE; j+=i) status[j]=1;
+        }
+    }
+    status[1] = 0;
+    int d=1;
+    for(int k=1 ; k<=SIZE; k++)
+    {
+        if(status[k]==0)
+        {
+            result[d]=k;
+            d++;
+        }
+    }
+
+    if((d-1)%2==0)
+    {
+        num=(d-1)-n*2;
+        h=num/2;
+        for(i=1; i<=h; i++)
+        {
+            result[i]=0;
+        }
+        for(i=d-1; i>(d-1)-h; i--)
+        {
+            result[i]=0;
+        }
+        printf("%d %d:",SIZE,n);
+        for(i=1; i<=d-1; i++)
+        {
+            if(result[i]!=0)
+            {
+                cout<<" "<<result[i];
+            }
+        }
+        cout<<endl<<endl;
+
+    }
+    else if((d-1)%2==1)
+    {
+        num=(d-1)-((n*2)-1);
+        h=num/2;
+         for(i=1; i<=h; i++)
+        {
+            result[i]=0;
+        }
+        for(i=d-1; i>(d-1)-h; i--)
+        {
+            result[i]=0;
+        }
+        printf("%d %d:",SIZE,n);
+        for(i=1; i<=d-1; i++)
+        {
+            if(result[i]!=0)
+            {
+                cout<<" "<<result[i];
+            }
+        }
+         cout<<endl<<endl;
+    }
+
+}
+int main()
+{
+    int x,c;
+    while(cin>>x>>c)
+    {
+        if(x==1)
+        {
+            printf("%d %d: 1\n",x,c);
+        }
+        else
+            sieve(x,c);
+    }
+
+    return 0;
+}
+

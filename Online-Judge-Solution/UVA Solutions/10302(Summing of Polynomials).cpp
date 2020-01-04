@@ -1,0 +1,13 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long int n,sum,i;
+    while(scanf("%lld",&n)==1)
+    {
+
+    printf("%lld\n",(n*n*(n+1)*(n+1))/4);
+    }
+    return 0;
+}
