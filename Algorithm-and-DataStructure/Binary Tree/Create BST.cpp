@@ -35,13 +35,6 @@ struct Node* newNode(int data) {
     return (node);
 }
 
-void printList(Node* node) {
-    while(node) {
-        cout<< node->data <<endl;
-        node = node->left;
-    }
-}
-
 void printBT(const std::string& prefix, const Node* node, bool isLeft) {
     if( node != nullptr ) {
         cout << prefix;
